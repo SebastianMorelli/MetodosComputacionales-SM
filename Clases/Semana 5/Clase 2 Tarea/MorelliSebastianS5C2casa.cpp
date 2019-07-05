@@ -22,14 +22,9 @@ int main()
     float x[numpunt];
     float y[numpunt];
 
-    cout<<"La solución a la ecuación diferencial por el método de euler es: "<<endl;
-    for (int i = 0; i < numpunt; i++){
-        cout<<euler(x,y,numpunt)[i]<<", ";
-    }
-    
-    cout<<"La solución a la ecuación diferencial por el método de Rugen-Kutta es: "<<endl;
-    for (int i = 0; i < numpunt; i++){
-            cout<<rugen_Kutta(x, y, numpunt)[i]<<", ";
+    cout<<"Intervalo: "<<"Solución Euler: "<<"Solución Rugen-Kutta: "<<endl;
+    for (int i = 1; i <= numpunt; i++){
+        cout<<x[i]<<" "<<euler(x,y,numpunt)[i]<<" "<<rugen_Kutta(x, y, numpunt)[i]<<endl;
     }
 }
 
