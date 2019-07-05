@@ -1,4 +1,4 @@
-//Este código soluciona ecuaciones diferenciales de primer orden
+//Este código soluciona ecuaciones diferenciales de segundo orden
 
 #include <iostream>
 #include <cmath>
@@ -8,51 +8,75 @@ using namespace std;
 
 float h = 0.01;
 float mini = 0.0;
-float maxi = 2.0;
+float maxi = 5.0;
 int numpunt = (maxi - mini)/h;
-
+int mass = 2;
+int k = 300;
 
 //Declaración funciones
 
-float * euler(float arr1[], float arr2[], int div);
-float * rugen_Kutta(float arra[], float arrb[], int divi);
+float * rugen_Kutta2(float arr1, float arr2, float arr3, int div);
 
 int main()
 {
-    float x[numpunt];
-    float y[numpunt];
+    float t[numpunt];
+    float x1[numpunt];
+    float x2[numpunt];
+    
+    t[0] = mini;
+    x1[0] = 0.1;
+    x2[0] = 0;
+    
+    for(int i = 1; i <= numpunt; i++){
+        t[i] = rugen_Kutta2(t[i-1], x1[i-1], x2[i-1])[0];
+        x1[i] = rugen_Kutta2(t[i-1], x1[i-1], x2[i-1])[1];
+        x2[i] = rugen_Kutta2(t[i-1], x1[i-1], x2[i-1])[2];
+    }
 
-    cout<<"Intervalo: "<<"Solución Euler: "<<"Solución Rugen-Kutta: "<<endl;
+    cout<<"Timepo(s): "<<"Posición "<<"Velocidad: "<<endl;
     for (int i = 1; i <= numpunt; i++){
         cout<<x[i]<<" "<<euler(x,y,numpunt)[i]<<" "<<rugen_Kutta(x, y, numpunt)[i]<<endl;
     }
 }
 
-float * euler(float arr1[], float arr2[], int div){
-    arr1[0] = mini;
-    arr2[0] = 1.0;
-    float *p0 = arr2;
-    for(int i = 1; i <= div; i++){
-        arr1[i] = arr1[i-1] + h;
-        arr2[i] = arr2[i-1] + h * (-arr2[i-1]);
-    }
-    return p0;
+
+float * rugen_Kutta2(float arr1, float arr2, float arr3, int div){
+    
+    float arrayresult[3];
+    float *p = arrayresult;
+    
+    float k1x1 = arr3;
+    float k1x2 = -(k/m)*arr2;
+    
+    float x1 = arr1 + (h/2.0);
+    float y1x1 = arr2 + (h/2.0) * k1x1;
+    float y2x1 = arr3 + (h/2.0) * k1x2;
+    float k2x1 = y2x1;
+    float k2x2 = -(k/m)*y1x1;
+    
+    float x2 = arr1 + (h/2.0);
+    float y1x2 = arr2 + (h/2.0) * k2x1;
+    float y2x2 = arr3 + (h/2.0) * k2x2;
+    float k3x1 = y2x2;
+    float k3x2 = -(k/m)*y1x2;
+    
+    float x3 = arr1 + (h/2.0);
+    float y1x3 = arr2 + (h) * k3x1;
+    float y2x3 = arr3 + (h) * k3x2;
+    float k4x1 = y2x3;
+    float k4x2 = -(k/m)*y1x3;
+    
+    float prom_Kx1 = (1.0/6.0)*(k1x1 + 2.0*k2x1 + 2.0*k3x1 + k4x1);
+    float prom_kx2 = (1.0/6.0)*(k1x2 + 2.0*k2x2 + 2.0*k3x2 + k4x2);
+    
+    float x_new = arr1 + h;
+    float y1_new = arr2 + h * prom_kx1;
+    float y2_new = arr3 + h * prom_kx2;
+    
+    arrayresult[0] = x_new;
+    arrayresult[1] = y1_new;
+    arrayresult[2] = y2_new;
+    
+    return p;
 }
 
-float * rugen_Kutta(float arra[], float arrb[], int divi){
-    arra[0] = mini;
-    arrb[0] = 1.0;
-    float *p1 = arrb;
-    for(int i = 1; i <= divi; i++){
-        float k1 =h * -(arrb[i-1]);
-        float k2 =h * -(arrb[i-1] + 0.5 * k1);
-        float k3 =h * -(arrb[i-1] + 0.5 * k2);
-        float k4 =h * -(arrb[i-1] + k3);
-        
-        float prom = (1.0/6.0)*(k1 + 2.0*k2 + 2.0*k3 + k4);
-    
-        arra[i] = arra[i-1] + h;
-        arrb[i] = arrb[i-1] + prom;
-    }
-    return p1;
-}
