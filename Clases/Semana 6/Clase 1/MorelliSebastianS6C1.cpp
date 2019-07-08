@@ -1,4 +1,4 @@
-//Este código soluciona ecuaciones diferenciales de segundo orden
+//Este código soluciona una ecuación de onda de primer orden.
 
 #include <iostream>
 #include <cmath>
@@ -34,11 +34,18 @@ int main()
         }
     }
     
+    
+    
 }
 
 
 float * yoAdivinoFuturo (float arrPast, flaot arrFut){
+    
+    float * p = arrFut;
+    
     for( int i = 1; i <= numpunt; i++){
     arrFut[i] = (vel*dt)/dx * (arrPast[i]-arrPast[i-1]) + arrPast[i];
     }
+    
+    return p;
 }
