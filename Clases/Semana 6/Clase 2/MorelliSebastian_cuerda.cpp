@@ -44,9 +44,8 @@ int main()
         
             cout<<inicialWave[j]<<" ";
         }
-    }   
+    }    
 }
-
 
 float * yoAdivinoFuturo (float arrPast, flaot arrFut){
     
