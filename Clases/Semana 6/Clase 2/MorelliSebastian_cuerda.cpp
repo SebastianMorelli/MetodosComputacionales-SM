@@ -10,7 +10,7 @@ float longi = 1.0;
 float velc = 300.0;
 float dx = 0.005;
 float dt = (dx/velc)*0.25;
-float numpunt = longi/dx;
+int numpunt = longi/dx;
 float itera = 0.1/dt;
 
 //Declaración funciones
@@ -24,7 +24,8 @@ int main()
     float futureWave[numpunt];
  
     for (int i = 0; i <= numpunt; i++){
-        xWave = dx*i
+        
+        float xWave = dx*i;
         
         if(xWave < 0.75 || xWave > 1.25){
             inicialWave[i] = 1.0; 
@@ -47,13 +48,13 @@ int main()
     }    
 }
 
-float * yoAdivinoFuturo (float arrPast[], flaot arrFut[]){
+float * yoAdivinoFuturo (float arrPast[], float arrFut[]){
     
     float * p0 = arrFut;
     
     for( int i = 1; i < numpunt; i++){
         
-        arrFut[i] = (vel*dt)/dx * (arrPast[i]-arrPast[i-1]) + arrPast[i];
+        arrFut[i] = (velc*dt)/dx * (arrPast[i]-arrPast[i-1]) + arrPast[i];
     }
     
     return p0;
@@ -61,11 +62,11 @@ float * yoAdivinoFuturo (float arrPast[], flaot arrFut[]){
 
 float * yoReemplazoPasados (float arrPasd[], float arrFutu[]){
 
-    float * p1 = arrPast;
+    float * p1 = arrPasd;
     
     for( int i = 1; i < numpunt; i++){
         
-        arrPast[i] = arrFutu[i];
+        arrPasd[i] = arrFutu[i];
     }
     
     return p1;   
