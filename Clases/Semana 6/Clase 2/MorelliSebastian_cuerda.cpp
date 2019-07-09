@@ -6,17 +6,17 @@ using namespace std;
 
 //Declaración Variables 
 
-float long = 1.0;
+float longi = 1.0;
 float velc = 300.0;
 float dx = 0.005;
 float dt = (dx/velc)*0.25;
-float numpunt = long/dx;
+float numpunt = longi/dx;
 float itera = 0.1/dt;
 
 //Declaración funciones
 
-float * yoAdivinoFuturos (float arrPast, float arrFut);
-float * yoReemplazoPasados (float arrPasd, float arrFutu);
+float * yoAdivinoFuturos (float arrPast[], float arrFut[]);
+float * yoReemplazoPasados (float arrPasd[], float arrFutu[]);
 
 int main()
 {
@@ -47,7 +47,7 @@ int main()
     }    
 }
 
-float * yoAdivinoFuturo (float arrPast, flaot arrFut){
+float * yoAdivinoFuturo (float arrPast[], flaot arrFut[]){
     
     float * p0 = arrFut;
     
@@ -59,7 +59,7 @@ float * yoAdivinoFuturo (float arrPast, flaot arrFut){
     return p0;
 }
 
-float * yoReemplazoPasados (float arrPasd, float arrFutu){
+float * yoReemplazoPasados (float arrPasd[], float arrFutu[]){
 
     float * p1 = arrPast;
     
