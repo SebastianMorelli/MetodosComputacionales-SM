@@ -16,15 +16,15 @@ float itera = 0.1/dt;
 
 //Declaración funciones
 
-//float * yoAdivinoFuturos (float arrPast[], float arrFut[]);
-//float * yoReemplazoPasados (float arrPasd[], float arrFutu[]);
+float * yoAdivinoFuturos (float arrPast[], float arrPres[], float arrFut[]);
+float * yoReemplazoPasados (float arrPasd[], float arrFutu[]);
 
 int main()
 {
     float x[numpunt];
     float PastWave[numpunt];
-//    float presentWave[numpunt];
-//    float futureWave[numpunt];
+    float presentWave[numpunt];
+    float futureWave[numpunt];
  
     float j = 0;
     float k = A0;
@@ -39,41 +39,42 @@ int main()
             PastWave[i] = k;
         }
         x[i] = xRope;
-        cout<<x[i]<<" "<<PastWave[i]<<" ";    
+        cout<<x[i]<<" "<<PastWave[i]<<" "<<endl;    
     }
         
     
-//    for (int i = 0; i < itera/100; i++){
-//        for(int j = 0; j <= numpunt; j++){
-//        
-//            yoAdivinoFuturos (inicialWave, futureWave);
-//            yoReemplazoPasados (inicialWave, futureWave);
-//        
-//            cout<<inicialWave[j]<<" ";
-//        }
-//    }    
+    for (int i = 0; i < itera/100; i++){
+        for(int j = 0; j <= numpunt; j++){
+        
+            yoAdivinoFuturos (inicialWave, futureWave);
+            yoReemplazoPasados (inicialWave, futureWave);
+        
+            cout<<inicialWave[j]<<" ";
+        }
+    }    
 }
 
-//float * yoAdivinoFuturo (float arrPast[], float arrFut[]){
-//    
-//    float * p0 = arrFut;
-//    
-//    for( int i = 1; i < numpunt; i++){
-//        
-//        arrFut[i] = (velc*dt)/dx * (arrPast[i]-arrPast[i-1]) + arrPast[i];
-//    }
-//    
-//    return p0;
-//}
-//
-//float * yoReemplazoPasados (float arrPasd[], float arrFutu[]){
-//
-//    float * p1 = arrPasd;
-//    
-//    for( int i = 1; i < numpunt; i++){
-//        
-//        arrPasd[i] = arrFutu[i];
-//    }
-//    
-//    return p1;   
-//}
+float * yoAdivinoFuturos (float arrPast[], float arrPres[], float arrFut[]){
+    
+    float * p0 = arrFut;
+    
+    for( int i = 1; i < numpunt; i++){
+        
+        arrFut[i] = (pow(velc,2)*pow(dt,2)/pow(dx,2)) * (arrPres[i]+arrPres[i]-2*arrPres[i-1]) -arrPast[i] + 2*arrPres[i];
+    }
+    
+    return p0;
+}
+
+float * yoReemplazoPasados (float arrPasd[], float arrPresnt[],float arrFutu[]){
+
+    float * p1 = arrPasd;
+    
+    for( int i = 1; i < numpunt; i++){
+        
+        arrPasd[i] = arrPresnt[i];
+        arrPres[i] = arrFutu[i];
+    }
+    
+    return p1;   
+}
