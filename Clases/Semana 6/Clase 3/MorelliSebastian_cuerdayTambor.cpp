@@ -21,6 +21,7 @@ float itera = 0.1/dt;
 
 int main()
 {
+    float x[numpunt];
     float PastWave[numpunt];
 //    float presentWave[numpunt];
 //    float futureWave[numpunt];
@@ -36,8 +37,9 @@ int main()
             for(int j = A0; j>=0; j-=2*A0/numpunt){
                 PastWave[i] = j;
             }
-            cout<<inicialWave[i]<<" ";
         }
+        x[i] = xRope;
+        cout<<x[i]<<" "<<PastWave[i]<<" ";    
     }
         
     
