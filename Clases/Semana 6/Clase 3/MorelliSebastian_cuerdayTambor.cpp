@@ -26,17 +26,17 @@ int main()
 //    float presentWave[numpunt];
 //    float futureWave[numpunt];
  
+    float j = 0;
+    float k = A0;
     for (int i = 0; i <= numpunt; i++){
         float xRope = dx*i;
         if(xRope <= longi/2){
-            for(int j = 0; j<=A0; j+=2*A0/numpunt){
-                PastWave[i] = j;
-            }
+            j+=2*A0/numpunt;
+            PastWave[i] = j;
         }
         else{
-            for(int j = A0; j>=0; j-=2*A0/numpunt){
-                PastWave[i] = j;
-            }
+            k-=2*A0/numpunt;
+            PastWave[i] = k;
         }
         x[i] = xRope;
         cout<<x[i]<<" "<<PastWave[i]<<" ";    
