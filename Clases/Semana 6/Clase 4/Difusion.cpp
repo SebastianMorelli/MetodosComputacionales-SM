@@ -25,7 +25,7 @@ int main()
 {
     //Declaración Arrays
     float x[numpunt][numpunt];
-    float pastTxTy[numpunt];
+    float pastTxTy[numpunt][numpunt];
     float presentTxTy[numpunt];
     float futureTxTy[numpunt];
     
@@ -34,31 +34,31 @@ int main()
     
     //Condición inicial
 
-    for (int i = 1; i <= numpunt; i++){
+    for (int i = 0; i <= numpunt; i++){
+        float xlam = dx*i;
         for(int j = 0; j<= numpunt; j++){
             
-            float xlam = dx*i;
             float ylam = dx*j;
+            
             if(xlam >= 0.20 && xlam <=0.40 && ylam >= 0.40 && ylam <= 0.60){
-                
-                pastTxTy[xlam][ylam] = Tpeq;
+              pastTxTy[i][j] = Tpeq;
             }
             else{
-                pastTxTy[xlam][ylam] = T0;
+              pastTxTy[i][j] = T0;
             }    
+            x[i][j] = xlam;
+            cout<<x[i][i]<<" "<<pastTxTy[i][j]<<" ";
         }
-        x[i][i] = {xlam},{xlam};
-        cout<<x[i][i]<<" "<<pastTxTy[i]<<endl;
     }
     
-//    //Segunda condición inicial pasado dt
+//    //Segunda condición inicial pasado un dt
 //    for(int i = 1; i < numpunt; i++){
 //    
 //        presentWave[i] = (((pow(velc,2)*pow(dt,2))/(2*pow(dx,2))) * (pastWave[i+1] + pastWave[i-1] - 2*pastWave[i])) + pastWave[i];
 //        cout<<x[i]<<" "<<presentWave[i]<<endl;
 //    }
 //    
-//    //Output de las oiscilaciones futuras halladas
+//    //Output de las oscilaciones futuras halladas
 //    int contador = 0;
 //    for (int i = 0; i < itera; i++){
 //        
