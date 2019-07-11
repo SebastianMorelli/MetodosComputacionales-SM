@@ -103,3 +103,4 @@ float * yoReemplazoPasados (float arrPasd[], float arrPresnt[],float arrFutu[]){
     
     return p1;   
 }
+
