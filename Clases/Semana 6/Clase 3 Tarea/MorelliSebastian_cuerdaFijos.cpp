@@ -1,4 +1,4 @@
-//Este código soluciona una ecuación de onda de primer orden.
+//Este código soluciona una ecuación de onda de segundo orden con extremos fijos.
 
 #include <iostream>
 #include <cmath>
