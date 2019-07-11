@@ -68,7 +68,7 @@ int main()
         yoAdivinoFuturos (pastWave, presentWave, futureWave);
         yoReemplazoPasados (pastWave, presentWave, futureWave);
         
-        if(contador == 800){
+        if(contador == 500){
             for(int j = 0; j <= numpunt; j++){
                 cout<<x[j]<<" "<<presentWave[j]<<endl;
                 contador = 0;
