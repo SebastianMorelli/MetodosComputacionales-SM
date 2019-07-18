@@ -10,7 +10,7 @@ float dt0 = 0.1;
 float dt1 = 0.01;
 float dt2 = 0.001;
 
-int numpunt = 10000;
+int numpunt = 20000;
 float Msun = 1.0;
 float G = 39.42645673494773;  
 //G hallado haciendo las susticiones de unidades y calculado en python: (6.673e-11 * 1.989e30 * (6.68459e-12**3))/(3.171e-8**2)
@@ -82,7 +82,7 @@ int main()
         x_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], x_RK_dt2[i-1], vx_RK_dt2[i-1], dt2)[1];
         vx_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], x_RK_dt2[i-1], vx_RK_dt2[i-1], dt2)[2];
         y_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], y_RK_dt2[i-1], vy_RK_dt2[i-1], dt2)[1];
-        vy_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], y_RK_dt2[i-1], vy_RK_dt2[i-1], dt2)[2];
+        vy_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], y_RK_dt2[i-1], vy_RK_dt2[i-1], dt2)[2];    
     }
 
     cout<<"Tiempo dt = 0.1: "<<"Posición x dt = 0.1: "<<"Velocidad x dt = 0.1: "<<"Posición y dt = 0.1: "<<"Velocidad y dt = 0.1: "<<"Tiempo dt = 0.01: "<<"Posición x dt = 0.01: "<<"Velocidad x dt = 0.01: "<<"Posición y dt = 0.01: "<<"Velocidad y dt = 0.01: "<<"Tiempo dt = 0.001: "<<"Posición x dt = 0.001: "<<"Velocidad x dt = 0.001: "<<"Posición y dt = 0.001: "<<"Velocidad y dt = 0.001:"<<endl;
