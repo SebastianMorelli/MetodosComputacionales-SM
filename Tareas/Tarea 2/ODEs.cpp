@@ -12,7 +12,8 @@ float dt2 = 0.001;
 
 int numpunt = 10000;
 float Msun = 1.0;
-float G = 39.42645673494773;  //Hallado haciendo las susticiones de unidades y calculado en python: (6.673e-11 * 1.989e30 * (6.68459e-12**3))/(3.171e-8**2)
+float G = 39.42645673494773;  
+//G hallado haciendo las susticiones de unidades y calculado en python: (6.673e-11 * 1.989e30 * (6.68459e-12**3))/(3.171e-8**2)
 float Rst = 1.0;
 
 //Declaración funciones
@@ -65,28 +66,28 @@ int main()
     
     for(int i = 1; i <= numpunt; i++){
         
-        t0_RK[i] = rugen_Kutta(t0_RK[i-1], float x_RK_dt0[i-1], float vx_RK_dt0[i-1], dt0)[0];
-        float x_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], float x_RK_dt0[i-1], float vx_RK_dt0[i-1], dt0)[1];
-        float vx_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], float x_RK_dt0[i-1], float vx_RK_dt0[i-1], dt0)[2];
-        float y_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], float y_RK_dt0[i-1], float vy_RK_dt0[i-1], dt0)[1];
-        float vy_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], float y_RK_dt0[i-1], float vy_RK_dt0[i-1], dt0)[2];
+        t0_RK[i] = rugen_Kutta(t0_RK[i-1], x_RK_dt0[i-1], vx_RK_dt0[i-1], dt0)[0];
+        x_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], x_RK_dt0[i-1], vx_RK_dt0[i-1], dt0)[1];
+        vx_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], x_RK_dt0[i-1], vx_RK_dt0[i-1], dt0)[2];
+        y_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], y_RK_dt0[i-1], vy_RK_dt0[i-1], dt0)[1];
+        vy_RK_dt0[i] = rugen_Kutta(t0_RK[i-1], y_RK_dt0[i-1], vy_RK_dt0[i-1], dt0)[2];
         
-        t1_RK[i] = rugen_Kutta(t1_RK[i-1], float x_RK_dt1[i-1], float vx_RK_dt1[i-1], dt1)[0];
-        float x_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], float x_RK_dt1[i-1], float vx_RK_dt1[i-1], dt1)[1];
-        float vx_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], float x_RK_dt1[i-1], float vx_RK_dt1[i-1], dt1)[2];
-        float y_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], float y_RK_dt1[i-1], float vy_RK_dt1[i-1], dt1)[1];
-        float vy_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], float y_RK_dt1[i-1], float vy_RK_dt1[i-1], dt1)[2];
+        t1_RK[i] = rugen_Kutta(t1_RK[i-1], x_RK_dt1[i-1], vx_RK_dt1[i-1], dt1)[0];
+        x_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], x_RK_dt1[i-1], vx_RK_dt1[i-1], dt1)[1];
+        vx_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], x_RK_dt1[i-1], vx_RK_dt1[i-1], dt1)[2];
+        y_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], y_RK_dt1[i-1], vy_RK_dt1[i-1], dt1)[1];
+        vy_RK_dt1[i] = rugen_Kutta(t1_RK[i-1], y_RK_dt1[i-1], vy_RK_dt1[i-1], dt1)[2];
         
-        t2_RK[i] = rugen_Kutta(t2_RK[i-1], float x_RK_dt2[i-1], float vx_RK_dt2[i-1], dt2)[0];
-        float x_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], float x_RK_dt2[i-1], float vx_RK_dt2[i-1], dt2)[1];
-        float vx_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], float x_RK_dt2[i-1], float vx_RK_dt2[i-1], dt2)[2];
-        float y_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], float y_RK_dt2[i-1], float vy_RK_dt2[i-1], dt2)[1];
-        float vy_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], float y_RK_dt2[i-1], float vy_RK_dt2[i-1], dt2)[2];
+        t2_RK[i] = rugen_Kutta(t2_RK[i-1], x_RK_dt2[i-1], vx_RK_dt2[i-1], dt2)[0];
+        x_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], x_RK_dt2[i-1], vx_RK_dt2[i-1], dt2)[1];
+        vx_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], x_RK_dt2[i-1], vx_RK_dt2[i-1], dt2)[2];
+        y_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], y_RK_dt2[i-1], vy_RK_dt2[i-1], dt2)[1];
+        vy_RK_dt2[i] = rugen_Kutta(t2_RK[i-1], y_RK_dt2[i-1], vy_RK_dt2[i-1], dt2)[2];
     }
 
-    cout<<"Tiempo dt = 0.1: "<<"Posición dt = 0.1: "<<"Velocidad dt = 0.1: "<<"Tiempo dt = 0.01: "<<"Posición dt = 0.01: "<<"Velocidad dt = 0.01: "<<"Tiempo dt = 0.001: "<<"Posición dt = 0.001: "<<"Velocidad dt = 0.001: "<<endl;
+    cout<<"Tiempo dt = 0.1: "<<"Posición x dt = 0.1: "<<"Velocidad x dt = 0.1: "<<"Posición y dt = 0.1: "<<"Velocidad y dt = 0.1: "<<"Tiempo dt = 0.01: "<<"Posición x dt = 0.01: "<<"Velocidad x dt = 0.01: "<<"Posición y dt = 0.01: "<<"Velocidad y dt = 0.01: "<<"Tiempo dt = 0.001: "<<"Posición x dt = 0.001: "<<"Velocidad x dt = 0.001: "<<"Posición y dt = 0.001: "<<"Velocidad y dt = 0.001:"<<endl;
     for (int i = 1; i <= numpunt; i++){
-        cout<<t0_RK[i]<<" "<<x_RK_dt0[i]<<" "<<v_RK_dt0[i]<<t1_RK[i]<<" "<<x_RK_dt1[i]<<" "<<v_RK_dt1[i]<<t2_RK[i]<<" "<<x_RK_dt2[i]<<" "<<v_RK_dt2[i]<<endl;
+        cout<<t0_RK[i]<<" "<<x_RK_dt0[i]<<" "<<vx_RK_dt0[i]<<" "<<y_RK_dt0[i]<<" "<<vy_RK_dt0[i]<<" "<<t1_RK[i]<<" "<<x_RK_dt1[i]<<" "<<vx_RK_dt1[i]<<" "<<y_RK_dt1[i]<<" "<<vy_RK_dt1[i]<<" "<<t2_RK[i]<<" "<<x_RK_dt2[i]<<" "<<vx_RK_dt2[i]<<" "<<y_RK_dt2[i]<<" "<<vy_RK_dt2[i]<<endl;
     }
 }
 
