@@ -1,0 +1,19 @@
+Análisis Archivos de Fourier:
+
+Inicialmente se generaron las gráficas originales de una mujer sonriente y otra seria, a las cuales se les hicieron transformadas de Fourier
+ordinarias, después se generaron las mismas transformadas pero de forma que las frecuencias bajas estuvieran centradas para facilitar el
+filtro de la imagen. Después para la imagen seria se filtraron las frecuencias bajas dejando las altas, para que se percibieran los detalles y 
+posteriormente se pudiera apreciar dicha imagen desde cerca, para la imagen sonriente se hizo el proceso contrario, se filtraron las
+frecuencias altas dejando las bajas, para que se percibieran los rasgos más generales y posteriormente se pudiera apreciar dicha imagen desde
+distancia. Habiendo hecho esto se hicieron las transformadas inversas para evidenciar haber hecho cada filtro de manera correcta y finalmente
+se generó la imagen híbrida que resulto ser la suma de las dos transformadas inversas ya filtradas.
+
+Análisis Archivos ODEs:
+
+En este ejercicio se pudo evidenciar unicamente el resultado hallado con RuggenKutta de 4to Orden para ecuaciones de segundo grado, debido a
+que los demás métodos de solucion de ODEs no pudieron ser implementados. Analizando los resultados que se pudieron obtener se muestra que este
+método tiene una gran precisión para un dt lo suficientemente pequeño, de manera que para un dt = 0.1 la órbita de la tierra presenta una
+figura con lados rectos, los dts mas pequeños como dt= 0.01 o 0.001 dan la precisión suficiente a la hora de solucionar la ecuación. De manera 
+consiguiente se intentó gráficar el momentum y la energía del sistema, y aunque considero que los datos hallados para velocidades y posciones
+estan bien, la implementación para hallar momentum y energía puede no ser la correcta, por lo que los resultados, especialmente para momentum
+pueden carecer de sentido.
