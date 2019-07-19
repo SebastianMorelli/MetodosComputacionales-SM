@@ -1,64 +1,112 @@
 import numpy as np
 import matplotlib.pylab as plt
 
-dt0 = np.genfromtxt('data.txt', skip_header=(0), usecols =(0))
-x_dt0 = np.genfromtxt('data.txt', skip_header=(0), usecols =(1))
-vx_dt0 = np.genfromtxt('data.txt', skip_header=(0), usecols =(2))
-y_dt0 = np.genfromtxt('data.txt', skip_header=(0), usecols =(3))
-vy_dt0 = np.genfromtxt('data.txt', skip_header=(0), usecols =(4))
+#Datos Rugen-Kutta
+RG_dt0 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(0))
+RG_x_dt0 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(1))
+RG_vx_dt0 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(2))
+RG_y_dt0 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(3))
+RG_vy_dt0 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(4))
 
-dt1 = np.genfromtxt('data.txt', skip_header=(0), usecols =(5))
-x_dt1 = np.genfromtxt('data.txt', skip_header=(0), usecols =(6))
-vx_dt1 = np.genfromtxt('data.txt', skip_header=(0), usecols =(7))
-y_dt1 = np.genfromtxt('data.txt', skip_header=(0), usecols =(8))
-vy_dt1 = np.genfromtxt('data.txt', skip_header=(0), usecols =(9))
+RG_dt1 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(5))
+RG_x_dt1 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(6))
+RG_vx_dt1 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(7))
+RG_y_dt1 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(8))
+RG_vy_dt1 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(9))
 
-dt2 = np.genfromtxt('data.txt', skip_header=(0), usecols =(10))
-x_dt2= np.genfromtxt('data.txt', skip_header=(0), usecols =(11))
-vx_dt2 = np.genfromtxt('data.txt', skip_header=(0), usecols =(12))
-y_dt2 = np.genfromtxt('data.txt', skip_header=(0), usecols =(13))
-vy_dt2 = np.genfromtxt('data.txt', skip_header=(0), usecols =(14))
+RG_dt2 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(10))
+RG_x_dt2= np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(11))
+RG_vx_dt2 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(12))
+RG_y_dt2 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(13))
+RG_vy_dt2 = np.genfromtxt('dataRG.txt', skip_header=(1), usecols =(14))
 
+#Plots Posición
 fig0 = plt.figure(figsize=(20,4))
 ax0 = fig0.add_subplot(131)
-ax0.plot(x_dt0, y_dt0, 'navy', label = ('Posición'))
+ax0.plot(RG_x_dt0, RG_y_dt0, 'navy', label = ('RugenKutta'))
 ax0.set_xlabel('$Posición$ $x$ [UA]', size = 15)
 ax0.set_ylabel('$Posición$ $y$ [UA]', size = 15)
-ax0.set_title('RugenKutta: dt = 0.1 - 2000 Orbitas')
+ax0.set_title('Posición: dt = 0.1 - 2000 Orbitas')
 ax0.legend()
 
 ax1 = fig0.add_subplot(132)
-ax1.plot(x_dt1, y_dt1, 'navy', label = ('Posición'))
+ax1.plot(RG_x_dt1, RG_y_dt1, 'navy', label = ('RugenKutta'))
 ax1.set_xlabel('$Posición$ $x$ [UA]', size = 15)
 ax1.set_ylabel('$Posición$ $y$ [UA]', size = 15)
-ax1.set_title('RugenKutta: dt = 0.01 - 200 Orbitas')
+ax1.set_title('Posición: dt = 0.01 - 200 Orbitas')
 ax1.legend()
 
 ax2 = fig0.add_subplot(133)
-ax2.plot(x_dt2, y_dt2, 'navy', label = ('Posición'))
+ax2.plot(RG_x_dt2, RG_y_dt2, 'navy', label = ('RugenKutta'))
 ax2.set_xlabel('$Posición$ $x$ [UA]', size = 15)
 ax2.set_ylabel('$Posición$ $y$ [UA]', size = 15)
-ax2.set_title('RugenKutta: dt = 0.001 - 20 Orbitas')
+ax2.set_title('Posición: dt = 0.001 - 20 Orbitas')
 ax2.legend()
 
+#Plots Velocidad
 fig1 = plt.figure(figsize=(20,4))
 ax0 = fig1.add_subplot(131)
-ax0.plot(vx_dt0, vy_dt0, 'firebrick', label = ('Velocidad'))
+ax0.plot(RG_vx_dt0, RG_vy_dt0, 'firebrick', label = ('RugenKutta'))
 ax0.set_xlabel('$Velocidad$ $x$ [UA/yrs$^2$]', size = 15)
 ax0.set_ylabel('$Velocidad$ $y$ [UA/yrs$^2$]', size = 15)
-ax0.set_title('RugenKutta: dt = 0.1 - 2000 Orbitas')
+ax0.set_title('Velocidad: dt = 0.1 - 2000 Orbitas')
 ax0.legend()
 
 ax1 = fig1.add_subplot(132)
-ax1.plot(vx_dt1, vy_dt1, 'firebrick', label = ('Velocidad'))
+ax1.plot(RG_vx_dt1, RG_vy_dt1, 'firebrick', label = ('RugenKutta'))
 ax1.set_xlabel('$Velocidad$ $x$ [UA/yrs$^2$]', size = 15)
 ax1.set_ylabel('$Velocidad$ $y$ [UA/yrs$^2$]', size = 15)
-ax1.set_title('RugenKutta: dt = 0.01 - 200 Orbitas')
+ax1.set_title('Velocidad: dt = 0.01 - 200 Orbitas')
 ax1.legend()
 
 ax2 = fig1.add_subplot(133)
-ax2.plot(vx_dt2, vy_dt2, 'firebrick', label = ('Velocidad'))
+ax2.plot(RG_vx_dt2, RG_vy_dt2, 'firebrick', label = ('RugenKutta'))
 ax2.set_xlabel('$Velocidad$ $x$ [UA/yrs$^2$]', size = 15)
 ax2.set_ylabel('$Velocidad$ $y$ [UA/yrs$^2$]', size = 15)
-ax2.set_title('RugenKutta: dt = 0.001 - 20 Orbitas')
+ax2.set_title('Velocidad: dt = 0.001 - 20 Orbitas')
+ax2.legend()
+
+#Formula Momentum
+def MomentumAng (Posx, Posy, Velx, Vely, dt):
+    mass = 3.00273e-6
+    MomentLinX = mass*Velx
+    MomentLinY = mass*Vely
+    
+    MomentAngX = np.empty([len(Posx)])
+    MomentAngY = np.empty([len(Posx)])
+    
+    for i in range(len(Posx)):
+        #print(Posx[i]*MomentLinX[i]*np.sin((2*np.pi)/dt))
+        MomentAngX[i] = Posx[i]*MomentLinX[i]*np.sin((2*np.pi)/dt)
+        MomentAngY[i] = Posy[i]*MomentLinY[i]*np.sin((2*np.pi)/dt)
+        dt += dt
+    return np.sqrt(MomentAngX**2 + MomentAngY**2)
+
+
+MomentAng_RG_dt0 = MomentumAng(RG_x_dt0, RG_y_dt0, RG_vx_dt0, RG_vy_dt0, RG_dt0[0])
+MomentAng_RG_dt1 = MomentumAng(RG_x_dt1, RG_y_dt1, RG_vx_dt1, RG_vy_dt1, RG_dt1[0])
+MomentAng_RG_dt2 = MomentumAng(RG_x_dt2, RG_y_dt2, RG_vx_dt2, RG_vy_dt2, RG_dt2[0])
+
+#Plots Momentum
+
+fig2 = plt.figure(figsize=(28,4))
+ax0 = fig2.add_subplot(131)
+ax0.plot(np.log(RG_dt0), MomentAng_RG_dt0, 'forestgreen', label = ('RugenKutta'))
+ax0.set_xlabel('$tiempo$  [yrs]', size = 15)
+ax0.set_ylabel('$Momentum Angular$ [Msol.UA$^2$/yrs]', size = 15)
+ax0.set_title('Momentum Angular: dt = 0.1 - 2000 Orbitas')
+ax0.legend()
+
+ax1 = fig2.add_subplot(132)
+ax1.plot(np.log(RG_dt1), MomentAng_RG_dt1, 'forestgreen', label = ('RugenKutta'))
+ax1.set_xlabel('$tiempo$  [yrs]', size = 15)
+ax1.set_ylabel('$Momentum Angular$ [Msol.UA$^2$/yrs]', size = 15)
+ax1.set_title('Momentum Angular: dt = 0.01 - 200 Orbitas')
+ax1.legend()
+
+ax2 = fig2.add_subplot(133)
+ax2.plot(np.log(RG_dt2), MomentAng_RG_dt2, 'forestgreen', label = ('RugenKutta'))
+ax2.set_xlabel('$tiempo$  [yrs]', size = 15)
+ax2.set_ylabel('$Momentum Angular$ [Msol.UA$^2$/yrs]', size = 15)
+ax2.set_title('Momentum Angular: dt = 0.001 - 20 Orbitas')
 ax2.legend()
