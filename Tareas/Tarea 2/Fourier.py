@@ -6,18 +6,6 @@ from matplotlib.colors import LogNorm
 imgSer = plt.imread('cara_02_grisesMF.png')
 imgHap = plt.imread('cara_03_grisesMF.png')
 
-#Gráficas imagenes originales
-fig0 = plt.figure(figsize=(10,6))
-
-ax0 = fig0.add_subplot(121)
-ax0.imshow(np.abs(imgSer),plt.cm.gray)
-ax0.set_title('Imagen Seria Original')
-ax1 = fig0.add_subplot(122)
-ax1.imshow(np.abs(imgHap),plt.cm.gray)
-ax1.set_title('Imagen Feliz Original')
-
-plt.savefig('Originales.png')
-
 #Transformadas de Fourier imagenes
 TransimgSer = np.fft.fft2(imgSer)
 TransimgHap = np.fft.fft2(imgHap)
@@ -43,7 +31,7 @@ ax3 = fig1.add_subplot(224)
 ax3.imshow(np.abs(TransimgHapSh),norm=LogNorm())
 ax3.set_title('Transformada de Fourier Imagen Feliz freq. bajas Centradas')
 
-plt.savefig('Transformadas.png')
+plt.savefig('FFtIm.pdf')
 
 #Creación de copias para modificar
 cTransimgSerSh = np.copy(TransimgSerSh)
@@ -64,42 +52,38 @@ def PasaBajas(data):
 PasaAltas(cTransimgSerSh)
 PasaBajas(cTransimgHapSh)
 
-#Gráficas de Transformadas filtradas
-
-fig2 = plt.figure(figsize=(10,6))
-
-ax0 = fig2.add_subplot(121)
-ax0.imshow(np.abs(cTransimgSerSh),norm=LogNorm())
-ax0.set_title('Transformada Imagen Seria Filtrada')
-ax1 = fig2.add_subplot(122)
-ax1.imshow(np.abs(cTransimgHapSh),norm=LogNorm())
-ax1.set_title('Transformada Imagen Feliz Filtrada')
-
-plt.savefig('TransFilt.png')
-
 #Inversas de Fourier
 newimgSer = np.fft.ifft2(cTransimgSerSh)
 newimgHap = np.fft.ifft2(cTransimgHapSh)
 
-#Gráficas de imagenes filtradas
-fig3 = plt.figure(figsize=(10,6))
+#Gráficas de filtraciones y proceso
 
-ax0 = fig3.add_subplot(121)
-ax0.imshow(np.abs(newimgSer),plt.cm.gray)
-ax0.set_title('Imagen Seria con Filtrado de Frecuencias Bajas')
-ax1 = fig3.add_subplot(122)
-ax1.imshow(np.abs(newimgHap),plt.cm.gray)
-ax1.set_title('Imagen Feliz con Filtrado de Frecuencias Altas')
+fig2 = plt.figure(figsize=(12,10))
 
-plt.savefig('Filtradas.png')
+ax0 = fig2.add_subplot(221)
+ax0.imshow(np.abs(cTransimgSerSh),norm=LogNorm())
+ax0.set_title('Transformada Imagen Seria Filtrada')
+ax1 = fig2.add_subplot(222)
+ax1.imshow(np.abs(cTransimgHapSh),norm=LogNorm())
+ax1.set_title('Transformada Imagen Feliz Filtrada')
+
+ax2 = fig2.add_subplot(223)
+ax2.imshow(np.abs(newimgSer),plt.cm.gray)
+ax2.set_title('Imagen Seria con Filtrado de Frecuencias Bajas')
+ax3 = fig2.add_subplot(224)
+ax3.imshow(np.abs(newimgHap),plt.cm.gray)
+ax3.set_title('Imagen Feliz con Filtrado de Frecuencias Altas')
+
+plt.savefig('ImProceso.pdf')
+
 
 #Imagen Final
 newimgFin = newimgSer + newimgHap
 
-fig4 = plt.figure(figsize=(12,10))
+fig3 = plt.figure(figsize=(12,10))
 
-ax0 = fig4.add_subplot(111)
+ax0 = fig3.add_subplot(111)
 ax0.imshow(np.abs(newimgFin),plt.cm.gray)
 ax0.set_title('Imagen Híbrida')
 
-plt.savefig('Final.png')
+plt.savefig('ImHybrid.pdf')
