@@ -119,7 +119,7 @@ plt.savefig('Mome_met_dt.pdf')
 
 #Formula Energía
 
-def Energon((Posx, Posy, Velx, Vely):
+def Energon(Posx, Posy, Velx, Vely):
     
     massTi = 3.00273e-6
     cineticX = 1/2 * massTi * Velx**2
@@ -127,7 +127,7 @@ def Energon((Posx, Posy, Velx, Vely):
     PotencialX = massTi*Posx
     PotencialY = massTi*Posy
             
-    Cinetic = np.sqrt(cineticX**2 + CineticY**2)
+    Cinetic = np.sqrt(cineticX**2 + cineticY**2)
     Potencial = np.sqrt(PotencialX**2 + PotencialY**2)
     return Cinetic + Potencial
             
